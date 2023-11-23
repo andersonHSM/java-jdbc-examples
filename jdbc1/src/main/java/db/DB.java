@@ -36,6 +36,8 @@ public class DB {
     }
 
     public static void closeStatement(Statement statement) {
+        if (statement == null) return;
+
         try {
             statement.close();
         } catch (SQLException e) {
@@ -45,6 +47,8 @@ public class DB {
     }
 
     public static void closeResultSet(ResultSet resultSet) {
+        if (resultSet == null) return;
+
         try {
             resultSet.close();
         } catch (SQLException e) {
@@ -60,8 +64,6 @@ public class DB {
             props.load(fs);
 
             return props;
-        } catch (FileNotFoundException e) {
-            throw new DbException(e.getMessage());
         } catch (IOException e) {
             throw new DbException(e.getMessage());
         }

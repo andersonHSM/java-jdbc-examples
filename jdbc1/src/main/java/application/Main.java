@@ -9,14 +9,14 @@ import java.sql.Statement;
 
 public class Main {
     public static void main(String[] args) {
-        Connection connection = null;
+        Connection connection;
         Statement statement = null;
         ResultSet resultSet = null;
 
         connection = DB.getConnection();
         try {
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM department");
+            resultSet = statement.executeQuery( "SELECT * FROM department");
 
             while (resultSet.next()) {
                 System.out.println(resultSet.getInt("Id")+ " | " + resultSet.getString( "Name"));
